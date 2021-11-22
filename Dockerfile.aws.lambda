@@ -1,0 +1,11 @@
+# use the correct architecture (x-86-64 / arm64)
+FROM public.ecr.aws/lambda/python:3.8-x86_64
+
+COPY ./api ./api
+
+COPY ./requirements.txt ./requirements.txt
+
+RUN pip install -r ./requirements.txt
+
+# project_folder.py_file.mangum_object_name
+CMD ["api.main.handler"]
