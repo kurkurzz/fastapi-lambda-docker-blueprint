@@ -61,7 +61,7 @@
 			Select relevant region and the lambda function you just created.
 			Click `Save`.
 	
-	- Click `Deploy API`
+	- Click `Deploy API`. 
 			Select or create a stage. You can name it `prod` or `staging` or whatever.
 			Click `Deploy`.
 
