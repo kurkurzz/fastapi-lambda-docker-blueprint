@@ -21,7 +21,7 @@
   
 2. **Create a Github repository**
    
-		This repository will store your project's code.
+	This repository will store your project's code.
 	- In the repository's setting, navigate to `Secrets`
 	- Insert AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. You can get the key from your aws account/dedicated production account. The account need to have programmatic access. Refer https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html
 
