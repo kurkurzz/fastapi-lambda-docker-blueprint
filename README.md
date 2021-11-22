@@ -35,7 +35,7 @@
 	- Go to https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/create/function
 	- Select `Container image`.
 	- Insert function name.
-	- For `Container Image URI`, select any image (doesn't really matter because we will overwrite this later)
+	- For `Container Image URI`, select any image (doesn't really matter because we will overwrite this later). If you don't have any images, refer https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html to push image manually. 
 	- For `architecture`, select `x86_64`. You could pick `arm64`, it's cheaper but you need to build a docker image for arm64. Currently, we just gonna create the x86_64 one.
 
 5. **Create API Gateway**
