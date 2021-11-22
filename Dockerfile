@@ -1,4 +1,4 @@
-#Normal dockerfile to run fastapi application
+# Normal dockerfile to run fastapi application
 
 FROM python:3.8
 
