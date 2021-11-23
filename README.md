@@ -1,5 +1,7 @@
 ## Deploy to AWS Lambda Documentation
 
+![deploy to lambda flow](deploy-to-lambda-flow.png)
+
 ### Steps
 
 1. **Setup project**
