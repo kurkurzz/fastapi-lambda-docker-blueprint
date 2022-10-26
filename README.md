@@ -40,7 +40,13 @@
 	- For `Container Image URI`, select any image (doesn't really matter because we will overwrite this later). If you don't have any images, refer https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html to push image manually. 
 	- For `architecture`, select `x86_64`. You could pick `arm64`, it's cheaper but you need to build a docker image for arm64. Currently, we just gonna create the x86_64 one.
 
-5. **Create API Gateway**
+5. **Create Function URL**
+
+	- Go to Lambda function's `configuration` tab
+	- 
+
+## ARCHIVE
+5. **Create API Gateway** No longer relevant since AWS introduced built-in function url
 
 	- Go to https://ap-southeast-1.console.aws.amazon.com/apigateway/main/precreate?region=ap-southeast-1
 	- Click `Build` on `REST API`

@@ -1,0 +1,8 @@
+# fastapi related packages. don't forget the "standard" in uvicorn!
+fastapi
+uvicorn[standard]
+mangum
+
+# make sure to use opencv-python-headless instead of the normal opencv-python
+# because this one has no GUI. Lambda not support any kind of GUI
+opencv-python-headless
