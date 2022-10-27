@@ -83,8 +83,6 @@ jobs:
 
     ## steps above is to populate the ecr with an image
     ## lambda function can only be created by specifying an image
-    ## create ecr, run this, create lambda
-    ## uncomment this after the first run
 
     - name: Update Lambda function
       id: update-function
