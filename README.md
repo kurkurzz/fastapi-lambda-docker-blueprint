@@ -1,6 +1,22 @@
-## Deploy to AWS Lambda Documentation
+## Deploy FastAPI Application to AWS Lambda with Docker Documentation
 
 ![deploy to lambda flow](deploy-to-lambda-flow-v2.png)
+
+### Why use Lambda
+
+**Pros**
+
+- Pay per use. No charge incurred if there is no activity. Cheaper for most use case.
+- Easy integration with other AWS services. Can invoke using function's url or other AWS activities.
+- Can configure memory and /tmp storage.
+- Can use docker (max of 10 GB of project size).
+- Built-in function URL.
+
+**Limitation**
+
+- Can only be run for max 15 minutes. If your operation takes longer, use other services like ECS.
+- Cannot receive large files >6MB directly. Must use workaround such as upload to S3 first and invoke the function based on S3 activity. Discussion on that: https://www.reddit.com/r/aws/comments/yds4u0/aws_lambdas_function_url_size_limit/
+- Hard to test code locally.
 
 ### Steps
 
