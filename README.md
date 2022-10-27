@@ -1,6 +1,6 @@
 ## Deploy to AWS Lambda Documentation
 
-![deploy to lambda flow](deploy-to-lambda-flow.png)
+![deploy to lambda flow](deploy-to-lambda-v2.png)
 
 ### Steps
 
