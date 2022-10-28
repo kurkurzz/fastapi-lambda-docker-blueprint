@@ -1,19 +1,24 @@
 # use the correct architecture (x-86_64 / arm64)
 # any external packages can be installed using yum
+# this is the base of the docker environment
 FROM public.ecr.aws/lambda/python:3.8-x86_64
 
 # apparently using COPY will make the program not realise app is a module.
+# use ADD instead
 ADD app app
 
-# install packages for opencv operations
+# install packages for opencv operations if you use it
 RUN yum -y install mesa-libGL libsndfile
 
+# install project dependencies
 COPY ./requirements.txt ./requirements.txt
 RUN pip install -r ./requirements.txt
 
-# All cache directory must be set to /tmp (lambda tmp directory)
+# all cache directory must be set to /tmp (lambda temporary directory)
+# if you got error related to could not "write cache on some/folder", 
+# this might be the solution
 ENV NUMBA_CACHE_DIR=/tmp
 ENV MPLCONFIGDIR=/tmp
 
 # project_folder.py_file.mangum_object_name
-CMD ["api.main.handler"]
+CMD ["app.main.handler"]

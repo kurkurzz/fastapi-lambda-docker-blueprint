@@ -9,6 +9,7 @@ app = FastAPI()
 async def root():
 	return {
 		'status': 'success',
+		'created by': 'hafiz <3'
 	}
 
 origins = ["*"]

@@ -28,7 +28,7 @@ env:
   ECR_REPOSITORY: repository-name               # set this to your Amazon ECR repository name (just name, not url)
   LAMBDA_FUNCTION_NAME: function-name           # set this to your Lambda function name
   S3_BUCKET: bucket-name                        # set this to your S3 Bucket
- 
+
 jobs:
   deploy:
     name: Deploy To AWS Lambda
@@ -46,7 +46,8 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    # Relevant to project related to ml because you need to download to ml models from S3.
+    # relevant to project related to ml because you need to download to ml models from S3.
+    # it's where you usually store your models.
     # else comment `Create Models Folder` and `Download ML Models from S3`
     - name: Create Models Folder
       run: |
@@ -74,8 +75,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        # Build a docker container and
-        # push it to ECR
+        # build a docker container and push it to ECR
         # dont forget to specify the correct dockerfile!!!
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . -f Dockerfile.aws.lambda
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
