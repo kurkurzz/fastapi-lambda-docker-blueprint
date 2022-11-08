@@ -62,6 +62,13 @@
 	- Go to `Function URL` tab
 	- Set relevant CORS information
 
+### Resources
+
+- https://github.com/gbdevw/python-fastapi-aws-lambda-container
+- https://medium.com/analytics-vidhya/python-fastapi-and-aws-lambda-container-3e524c586f01
+- https://www.youtube.com/watch?v=V-ac_ZvdAW4 (To apply API KEY authorization.)
+
+
 ## ARCHIVE
 5. **Create API Gateway** No longer relevant since AWS introduced built-in function url
 
@@ -89,10 +96,3 @@
 	- Click `Deploy API`. 
 			Select or create a stage. You can name it `prod` or `staging` or whatever
 			Click `Deploy`
-
-
-### Resources
-
-- https://github.com/gbdevw/python-fastapi-aws-lambda-container
-- https://medium.com/analytics-vidhya/python-fastapi-and-aws-lambda-container-3e524c586f01
-- https://www.youtube.com/watch?v=V-ac_ZvdAW4 (To apply API KEY authorization.)
