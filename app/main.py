@@ -7,6 +7,7 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
+	//put your model inferencing code here
 	return {
 		'status': 'success',
 		'created by': 'hafiz <3'
