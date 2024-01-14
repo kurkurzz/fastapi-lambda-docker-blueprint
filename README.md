@@ -27,10 +27,9 @@
 		- Run `pip install mangum`
 		- Wrap fastapi with mangum. Refer sample code: [main.py](api/main.py)
 
-	- Create 2 dockerfile. First one is to create a normal fastapi application. The second one is to make it suitable for Lambda environment
+	- Create dockerfile. It is not the normal dockerfile but it is built for for Lambda environment
 
-		- [Dockerfile](Dockerfile) for the first one
-		- [Dockerfile for Lambda](Dockerfile.aws.lambda) for the second one
+		- [Dockerfile for Lambda](Dockerfile.aws.lambda)
 
 	- Create `aws.yml` file for Github Action (You need to complete steps 2, 3, 4 first)
 
