@@ -28,6 +28,7 @@ env:
   ECR_REPOSITORY: repository-name               # set this to your Amazon ECR repository name (just name, not url)
   LAMBDA_FUNCTION_NAME: function-name           # set this to your Lambda function name
   S3_BUCKET: bucket-name                        # set this to your S3 Bucket
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   deploy:
@@ -73,7 +74,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
+        
       run: |
         # build a docker container and push it to ECR
         # dont forget to specify the correct dockerfile!!!
@@ -89,3 +90,26 @@ jobs:
       env:
         IMAGE_URI: ${{ steps.build-image.outputs.image }}
       run: aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --image-uri $IMAGE_URI
+
+    - name: Delete previous images from ECR (Optional)
+      run: |
+        # Get the image tag used in the previous step
+    
+        # Retrieve all image tags in the repository
+        IMAGE_TAGS=$(aws ecr describe-images --repository-name $ECR_REPOSITORY --query 'imageDetails[*].imageTags[*]' --output json | jq -r 'flatten | .[]')
+    
+        # Exclude the previous image tag from the list of tags
+        FILTERED_TAGS=""
+        for tag in $IMAGE_TAGS; do
+            if [ "$tag" != "$IMAGE_TAG" ]; then
+                FILTERED_TAGS+="imageTag=$tag "
+            fi
+        done
+    
+        # Trim any leading or trailing whitespace from the FILTERED_TAGS
+        FILTERED_TAGS=${FILTERED_TAGS%% }
+    
+        echo "Image tags: $FILTERED_TAGS"
+    
+        # Run the batch-delete-image command with the filtered image tags
+        aws ecr batch-delete-image --repository-name $ECR_REPOSITORY --image-ids $FILTERED_TAGS
